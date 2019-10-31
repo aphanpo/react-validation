@@ -2,7 +2,7 @@ import React, {useState} from "react"
 import "../styles/base.css"
 import validator from "validator"
 
-function Form() {
+function Form(props) {
   const [name, setName] = useState("")
   const [nameError, setNameError] = useState(<div className="white">Name</div>)
   const [email, setEmail] = useState("")
@@ -63,6 +63,7 @@ function handleSubmit(e){
 
   if (!err) {
     console.log("Submitted")
+    props.history.push('SubmitPage')
   } else {
     console.log("not submitted")
   }
@@ -117,7 +118,7 @@ function handleSubmit(e){
           className={siteError === "" ? "" : "error"} 
           onChange={e => setSite(e.target.value)}
           placeholder="https://mywebsite.com"
-          type="url"
+          type="text"
           value={site}
         />
 
